@@ -17,7 +17,7 @@ export default function App() {
   // Application states
   const [playing, setPlaying] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(60); // 0 to 100
-  const [position, setPosition] = useState<Position3D>({ x: 0, y: 0, z: 2.5 });
+  const [position, setPosition] = useState<Position3D>({ x: 0, y: 0, z: 0 });
   const [autopilotActive, setAutopilotActive] = useState<boolean>(true);
   const [selectedPresetId, setSelectedPresetId] = useState<string>('battement-coeur');
   const [trajectoryType, setTrajectoryType] = useState<TrajectoryType>('gauche-droite');
@@ -84,36 +84,35 @@ export default function App() {
 
         let newX = 0;
         let newY = 0;
-        let newZ = 2.5; // default front focus depth
+        let newZ = 0; // default centered depth
 
         switch (trajectoryType) {
           case 'gauche-droite':
-            // Oscillates back and forth linearly from -3.5m to +3.5m, slightly in front (+2.5m)
+            // Oscillates back and forth linearly from -3.5m to +3.5m, centered
             newX = 3.5 * Math.sin(accumulatedTime);
             newY = 0;
-            newZ = 2.5;
+            newZ = 0;
             break;
 
           case 'saut-gd':
             // Periodic instant jumping: alternate between far left and far right
-            // Triggered based on the square wave of sine
             newX = Math.sin(accumulatedTime) >= 0 ? 3.5 : -3.5;
             newY = 0;
-            newZ = 2.5;
+            newZ = 0;
             break;
 
           case 'haut-bas':
-            // Center horizontal, oscillates vertical height from -3.5m to +3.5m
+            // Center horizontal, oscillates vertically on 2D map (Z axis) from -3.5m to +3.5m
             newX = 0;
-            newY = 3.5 * Math.sin(accumulatedTime);
-            newZ = 2.5;
+            newY = 0;
+            newZ = 3.5 * Math.sin(accumulatedTime);
             break;
 
           case 'saut-hb':
-            // Periodic instant vertical height jumping
+            // Periodic instant vertical jumping
             newX = 0;
-            newY = Math.sin(accumulatedTime) >= 0 ? 3.5 : -3.5;
-            newZ = 2.5;
+            newY = 0;
+            newZ = Math.sin(accumulatedTime) >= 0 ? 3.5 : -3.5;
             break;
 
           case 'cercle-360':

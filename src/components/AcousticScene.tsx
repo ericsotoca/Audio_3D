@@ -107,15 +107,12 @@ export const AcousticScene: React.FC<AcousticSceneProps> = ({
 
   return (
     <div id="acoustic-scene-card" className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 flex flex-col items-center">
-      <div className="w-full flex items-center justify-between mb-6">
+      <div className="w-full flex items-center mb-6">
         <div className="flex items-center gap-2">
           <div className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
           <h2 className="text-xs font-bold tracking-wider text-slate-800 uppercase font-sans">
             Scène Acoustique 2D
           </h2>
-        </div>
-        <div className="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
-          X: {position.x.toFixed(2)}m | Y (Hauteur): {position.y.toFixed(2)}m | Z (Haut/Bas): {position.z.toFixed(2)}m
         </div>
       </div>
 
