@@ -22,7 +22,6 @@ export default function App() {
   const [selectedPresetId, setSelectedPresetId] = useState<string>('battement-coeur');
   const [trajectoryType, setTrajectoryType] = useState<TrajectoryType>('gauche-droite');
   const [orbitSpeed, setOrbitSpeed] = useState<number>(1.8);
-  const [showHelperInfo, setShowHelperInfo] = useState<boolean>(true);
 
   // Synchronize play state from the audio engine
   useEffect(() => {
@@ -199,58 +198,6 @@ export default function App() {
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8 flex flex-col gap-6">
         
-        {/* Recommendation banner styled after Sleek Interface's dark panels */}
-        <div className="bg-slate-900 text-slate-100 border border-slate-800 rounded-xl p-5 md:p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="flex items-start gap-4">
-            <div className="p-2.5 bg-indigo-500/10 rounded-lg flex-shrink-0 mt-0.5 border border-indigo-500/20">
-              <Sparkles className="w-5 h-5 text-indigo-400 animate-pulse" />
-            </div>
-            <div>
-              <p className="font-bold text-sm md:text-base text-white tracking-wide">
-                🎧 Casque ou Écouteurs Stéréo Recommandés !
-              </p>
-              <p className="text-xs text-slate-400 mt-1.5 max-w-2xl leading-relaxed">
-                Ce simulateur utilise la technologie de son spatial 3D (HRTF). Le port d&apos;écouteurs stéréo est indispensable pour percevoir l&apos;alternance bilatérale des sons qui favorise l&apos;apaisement du système nerveux (cohérence cardiaque et EMDR).
-              </p>
-            </div>
-          </div>
-          <button
-            onClick={handleTogglePlay}
-            className={`px-5 py-2.5 rounded-lg text-xs font-bold tracking-wider cursor-pointer whitespace-nowrap transition-all uppercase ${
-              playing 
-                ? 'bg-rose-600 hover:bg-rose-700 text-white'
-                : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm'
-            }`}
-          >
-            {playing ? 'COUPER LE SON' : 'ESSAYER MAINTENANT'}
-          </button>
-        </div>
-
-        {/* Collapsible Helper Information Panel */}
-        {showHelperInfo && (
-          <div id="info-panel" className="bg-white border border-slate-200 rounded-xl p-6 relative shadow-sm">
-            <button
-              onClick={() => setShowHelperInfo(false)}
-              className="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-[10px] font-bold px-2 py-1 bg-slate-100 border border-slate-200 rounded-lg cursor-pointer"
-            >
-              Masquer
-            </button>
-            <div className="flex gap-3">
-              <div className="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 flex-shrink-0 mt-0.5">
-                <Info className="w-4.5 h-4.5" />
-              </div>
-              <div>
-                <h3 className="text-xs font-bold tracking-wider text-slate-500 uppercase font-sans mb-1">
-                  Principe de la Stimulation Bilatérale Alternée (SBA)
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed max-w-4xl font-medium">
-                  La SBA active alternativement les deux hémisphères cérébraux par le biais de stimulus auditifs gauche/droite. Largement utilisée en thérapie EMDR, cette double attention aide à décharger la tension émotionnelle, à réguler les ruminations anxieuses et à favoriser l&apos;intégration des mémoires. Elle ralentit doucement la fréquence cardiaque et favorise un ancrage corporel immédiat.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Bento Grid: Acoustic scene on left, controllers on right */}
         <div id="bento-layout" className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Left Column: 2D Radar Display (Spans 5 columns) */}
@@ -290,6 +237,23 @@ export default function App() {
             selectedId={selectedPresetId}
             onChangePreset={handlePresetChange}
           />
+        </div>
+
+        {/* Persistent SBA Principle Section at the bottom */}
+        <div className="mt-4 bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-xs">
+          <div className="flex gap-4 items-start">
+            <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 flex-shrink-0 mt-0.5">
+              <Info className="w-5 h-5 text-indigo-600" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold tracking-wider text-slate-800 uppercase font-sans mb-2">
+                Principe de la Stimulation Bilatérale Alternée (SBA)
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                La SBA active alternativement les deux hémisphères cérébraux par le biais de stimulus auditifs gauche/droite. Largement utilisée en thérapie EMDR, cette double attention aide à décharger la tension émotionnelle, à réguler les ruminations anxieuses et à favoriser l&apos;intégration des mémoires. Elle ralentit doucement la fréquence cardiaque et favorise un ancrage corporel immédiat.
+              </p>
+            </div>
+          </div>
         </div>
       </main>
 
