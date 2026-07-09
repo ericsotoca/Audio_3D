@@ -182,16 +182,6 @@ export default function App() {
             <span>|</span>
             <span>STEREO HRTF</span>
           </div>
-          <button
-            onClick={handleTogglePlay}
-            className={`px-4 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all shadow-xs cursor-pointer ${
-              playing 
-                ? 'bg-rose-600 hover:bg-rose-700 text-white' 
-                : 'bg-indigo-600 hover:bg-indigo-700 text-white'
-            }`}
-          >
-            {playing ? 'Suspendre' : 'Démarrer'}
-          </button>
         </div>
       </header>
 

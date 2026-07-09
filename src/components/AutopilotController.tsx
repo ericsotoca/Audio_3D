@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Play, Pause, Compass } from 'lucide-react';
+import { Compass } from 'lucide-react';
 import { TRAJECTORIES } from '../data';
 import { TrajectoryType } from '../types';
 
@@ -42,29 +42,6 @@ export const AutopilotController: React.FC<AutopilotControllerProps> = ({
             <p className="text-sm font-bold text-slate-800">Trajectoire & Vitesse</p>
           </div>
         </div>
-
-        {/* Quick Activation Toggle Button */}
-        <button
-          id="autopilot-toggle"
-          onClick={() => setAutopilotActive(!autopilotActive)}
-          className={`flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${
-            autopilotActive
-              ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm'
-              : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
-          }`}
-        >
-          {autopilotActive ? (
-            <>
-              <Pause className="w-3.5 h-3.5 fill-current" />
-              <span>Suspendre</span>
-            </>
-          ) : (
-            <>
-              <Play className="w-3.5 h-3.5 fill-current" />
-              <span>Démarrer</span>
-            </>
-          )}
-        </button>
       </div>
 
       {/* Trajectory 3D Button Grid */}

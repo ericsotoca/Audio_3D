@@ -115,7 +115,7 @@ export const AcousticScene: React.FC<AcousticSceneProps> = ({
           </h2>
         </div>
         <div className="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
-          X: {position.x.toFixed(2)}m | Y (Haut): {position.y.toFixed(2)}m | Z (Avant): {position.z.toFixed(2)}m
+          X: {position.x.toFixed(2)}m | Y (Hauteur): {position.y.toFixed(2)}m | Z (Haut/Bas): {position.z.toFixed(2)}m
         </div>
       </div>
 
@@ -135,7 +135,6 @@ export const AcousticScene: React.FC<AcousticSceneProps> = ({
           
           <line x1="-100" y1="0" x2="100" y2="0" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="4 4" />
           <line x1="0" y1="-100" x2="0" y2="100" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="4 4" />
-
           {/* Concentric Distance Rings (1m, 2m, 3m, 4m, 5m) */}
           {[20, 40, 60, 80, 100].map((r, i) => (
             <circle
@@ -158,10 +157,10 @@ export const AcousticScene: React.FC<AcousticSceneProps> = ({
 
           {/* Axis Labels */}
           <text x="0" y="-88" textAnchor="middle" className="text-[8px] font-bold tracking-widest fill-slate-400 font-sans select-none">
-            AVANT (+)
+            HAUT (+)
           </text>
           <text x="0" y="94" textAnchor="middle" className="text-[8px] font-bold tracking-widest fill-slate-400 font-sans select-none">
-            ARRIÈRE (-)
+            BAS (-)
           </text>
           <text x="-95" y="3" textAnchor="start" className="text-[8px] font-bold tracking-widest fill-slate-400 font-sans select-none">
             GAUCHE (-)
